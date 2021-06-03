@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <AWSProjectType>Lambda</AWSProjectType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CloudRun.AWS\CloudRun.AWS\CloudRun.AWS.csproj" />
+    <ProjectReference Include="..\..\CloudRun.Common\CloudRun.Common\CloudRun.Common.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Amazon.Lambda.AspNetCoreServer" Version="6.0.2" />
+  </ItemGroup>
+</Project>

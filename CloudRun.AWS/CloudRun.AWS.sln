@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudRun.AWS", "CloudRun.AWS\CloudRun.AWS.csproj", "{BC63DFB9-70E2-4157-84B4-48E3A80A5130}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deps", "Deps", "{2307455B-0F14-4311-A45F-FA26B3BBA2F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudRun.Common", "..\CloudRun.Common\CloudRun.Common\CloudRun.Common.csproj", "{26814E47-D2A5-4B09-BD6C-F5F9C826D17D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC63DFB9-70E2-4157-84B4-48E3A80A5130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC63DFB9-70E2-4157-84B4-48E3A80A5130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC63DFB9-70E2-4157-84B4-48E3A80A5130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC63DFB9-70E2-4157-84B4-48E3A80A5130}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26814E47-D2A5-4B09-BD6C-F5F9C826D17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26814E47-D2A5-4B09-BD6C-F5F9C826D17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26814E47-D2A5-4B09-BD6C-F5F9C826D17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26814E47-D2A5-4B09-BD6C-F5F9C826D17D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99E91EB1-4BC0-4E4B-85E3-82C100AADC80}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{26814E47-D2A5-4B09-BD6C-F5F9C826D17D} = {2307455B-0F14-4311-A45F-FA26B3BBA2F5}
+	EndGlobalSection
+EndGlobal
