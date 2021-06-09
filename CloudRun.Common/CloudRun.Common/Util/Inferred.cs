@@ -1,4 +1,8 @@
-﻿using System;
+/*
+Igor Krupin
+https://github.com/clearwaterstream/Inferred
+*/
+using System;
 using System.Runtime.CompilerServices;
 
 namespace CloudRun.Common.Util
