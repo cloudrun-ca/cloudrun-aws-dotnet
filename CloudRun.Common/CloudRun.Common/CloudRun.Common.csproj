@@ -6,8 +6,16 @@
 
   <ItemGroup>
     <None Remove="Microsoft.Extensions.Configuration.Abstractions" />
+    <None Remove="Configuation\" />
+    <None Remove="Util\" />
+    <None Remove="Security\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.10" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuation\" />
+    <Folder Include="Util\" />
+    <Folder Include="Security\" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using CloudRun.AWS.Security;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 
@@ -7,11 +8,21 @@ namespace CloudRun.AspNetCore.Config
 {
     public class FromSecretsManagerConfigSource : JsonStreamConfigurationSource
     {
-        public FromSecretsManagerConfigSource()
-        {
-        }
+        readonly FromSecretsManagerConfigSourceOptions _options;
 
-        public bool Optional { get; set; }
+        public FromSecretsManagerConfigSource(Action<FromSecretsManagerConfigSourceOptions> setOptions)
+        {
+            var defaultOptions = new FromSecretsManagerConfigSourceOptions();
+
+            setOptions?.Invoke(defaultOptions);
+
+            if(string.IsNullOrEmpty(defaultOptions.SecretName))
+            {
+                throw new ArgumentNullException(nameof(FromSecretsManagerConfigSourceOptions.SecretName));
+            }
+
+            _options = defaultOptions;
+        }
 
         public override IConfigurationProvider Build(IConfigurationBuilder builder)
         {
@@ -24,11 +35,9 @@ namespace CloudRun.AspNetCore.Config
 
         void LoadStream()
         {
-            var key = $"{_serviceInfo.ServiceId.ToLowerInvariant()}/appSettings";
-
             try
             {
-                var json = SecretsManager.Instance.WhisperAsync(key).GetAwaiter().GetResult();
+                var json = SecretsManager.Instance.WhisperAsync(_options.SecretName).GetAwaiter().GetResult();
 
                 var ms = new MemoryStream();
 
@@ -40,13 +49,17 @@ namespace CloudRun.AspNetCore.Config
                 ms.Position = 0;
 
                 Stream = ms;
-
-                logger.Info("loaded appSettings from secrets manager");
             }
-            catch (Exception ex) when (Optional)
+            catch (Exception) when (_options.Optional)
             {
-                logger.Warn(ex, "could not load appSettings from secrets manager");
+                // do nothing
             }
         }
+    }
+
+    public class FromSecretsManagerConfigSourceOptions
+    {
+        public bool Optional { get; set; }
+        public string SecretName { get; set; }
     }
 }
